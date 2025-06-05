@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="mnG0VJJ028siTZ0DQfRU">
+    <mxGraphModel dx="1042" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jkwFe0hKUGfnm1YteqNM-1" value="Presentation Layer (PWA, Hybrid mobile app)&lt;div&gt;&lt;br&gt;&lt;div&gt;UI Components (React),&lt;/div&gt;&lt;div&gt;Routing (React-router)&lt;/div&gt;&lt;div&gt;Responsive web design&lt;/div&gt;&lt;div style=&quot;text-align: start;&quot;&gt;&amp;nbsp;i18n - language, locale based formatting, RTL support (react-18next)&lt;/div&gt;&lt;div&gt;a11y friendly - semantic tags, aria labelling, color contrast, keyboard navigation&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="60" width="430" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="jkwFe0hKUGfnm1YteqNM-4" value="&lt;div&gt;State Management Layer&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(react-redux)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;Global state, Auth state, User state, Policy state,&amp;nbsp;&lt;/div&gt;&lt;div&gt;Offline sync state&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jkwFe0hKUGfnm1YteqNM-5" value="&lt;div&gt;Network/API Layer&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(Tanstack query, axios)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;API clients, Retry/Queue, Token handling,&amp;nbsp;&lt;/div&gt;&lt;div&gt;Error handling&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="260" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jkwFe0hKUGfnm1YteqNM-6" value="&lt;div&gt;Offline data and sync Layer&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;IndexedDB, service workers, version conflict resolution&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="340" width="430" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jkwFe0hKUGfnm1YteqNM-10" value="Security Layer&lt;div&gt;&lt;br&gt;&lt;div&gt;Route guards, JWT, role-based rendering, secure sensitive data&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="100" height="360" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
