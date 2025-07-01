@@ -1,0 +1,180 @@
+
+ 
+1. Policy Management Module
+
+Policies
+GET /api/v1/enterprises/{enterpriseId}/policies - List all policies for enterprise
+POST /api/v1/enterprises/{enterpriseId}/policies - Create new policy
+GET /api/v1/enterprises/{enterpriseId}/policies/{policyId} - Get specific policy
+PUT /api/v1/enterprises/{enterpriseId}/policies/{policyId} - Update policy
+DELETE /api/v1/enterprises/{enterpriseId}/policies/{policyId} - Delete policy
+
+ 
+Apps & User Actions
+GET /api/v1/enterprises/{enterpriseId}/apps - List all available apps
+POST /api/v1/enterprises/{enterpriseId}/apps - Create new app
+GET /api/v1/enterprises/{enterpriseId}/apps/{appId} - Get specific app details
+PUT /api/v1/enterprises/{enterpriseId}/apps/{appId} - Get specific app details
+DELETE /api/v1/enterprises/{enterpriseId}/apps/{appId} - Get specific app details
+GET /api/v1/enterprises/{enterpriseId}/apps/{appId}/actions - List actions for specific app
+POST /api/v1/enterprises/{enterpriseId}/apps/{appId}/actions - Create new action for app
+GET /api/v1/enterprises/{enterpriseId}/apps/{appId}/actions/{actionId} - Get app action
+PUT /api/v1/enterprises/{enterpriseId}/apps/{appId}/actions/{actionId} - Update app action
+DELETE /api/v1/enterprises/{enterpriseId}/apps/{appId}/actions/{actionId} - Delete app action
+
+ 
+Remedial Actions
+These are remedial actions for device level violations like  break, installed a software not recognised by the enterprise etc. App level remedial actions shall be configured in the policy itself.
+
+GET /api/v1/remedial-actions - List available remedial action types
+GET /api/v1/enterprises/{enterpriseId}/remedial-actions - List enterprise specific remedial actions
+POST /api/v1/enterprises/{enterpriseId}/remedial-actions - Create remedial action for enterprise
+
+
+
+ 
+2. Security Dashboard Module
+
+Action Events
+GET /api/v1/enterprises/{enterpriseId}/action-events - List security events with filtersQuery params: 
+?startDate=&endDate=&locationId=&status=&userId=&deviceId=&limit=&offset=
+
+GET /api/v1/enterprises/{enterpriseId}/action-events/{eventId} - Get specific event details
+GET /api/v1/enterprises/{enterpriseId}/action-events/summary - Get dashboard summary/metrics
+GET /api/v1/enterprises/{enterpriseId}/action-events/export - Export events
+
+
+Real-time Updates
+If near real-time is acceptable, we can poll using regular HTTP connection every x (lets say 10) number of configurable seconds and get the latest events.
+
+GET /api/v1/enterprises/{enterpriseId}/action-events/stream - WebSocket/SSE for real-time events
+
+
+3. Device, User, Inventory & Work Location Management Module
+Enterprise Users
+GET /api/v1/enterprises/{enterpriseId}/users - List enterprise users
+POST /api/v1/enterprises/{enterpriseId}/users - Create new user
+GET /api/v1/enterprises/{enterpriseId}/users/{userId} - Get user details
+PUT /api/v1/enterprises/{enterpriseId}/users/{userId} - Update user
+DELETE /api/v1/enterprises/{enterpriseId}/users/{userId} - Delete user
+POST /api/v1/enterprises/{enterpriseId}/users/bulk-import - Bulk import users
+GET /api/v1/enterprises/{enterpriseId}/users/export - Export users
+
+Devices
+GET /api/v1/enterprises/{enterpriseId}/devices - List enterprise devices
+POST /api/v1/enterprises/{enterpriseId}/devices - Register new device
+GET /api/v1/enterprises/{enterpriseId}/devices/{deviceId} - Get device details
+PUT /api/v1/enterprises/{enterpriseId}/devices/{deviceId} - Update device
+DELETE /api/v1/enterprises/{enterpriseId}/devices/{deviceId} - Remove device
+GET /api/v1/enterprises/{enterpriseId}/devices/auto-discovered - List auto-discovered devices
+POST /api/v1/enterprises/{enterpriseId}/devices/{deviceId}/approve - Approve auto-discovered device
+POST /api/v1/enterprises/{enterpriseId}/devices/{deviceId}/assign - Assign device to user
+
+
+Device Inventory
+GET /api/v1/device-inventory - List global device inventory items
+GET /api/v1/enterprises/{enterpriseId}/device-inventory - List enterprise device inventory
+
+
+POST /api/v1/enterprises/{enterpriseId}/device-inventory - Create custom device inventory item
+GET /api/v1/enterprises/{enterpriseId}/device-inventory/{itemId} - Get inventory item
+PUT /api/v1/enterprises/{enterpriseId}/device-inventory/{itemId} - Update inventory item
+DELETE /api/v1/enterprises/{enterpriseId}/device-inventory/{itemId} - Delete inventory item
+
+Work Locations
+GET /api/v1/enterprises/{enterpriseId}/work-locations - List work locations
+POST /api/v1/enterprises/{enterpriseId}/work-locations - Create work location
+GET /api/v1/enterprises/{enterpriseId}/work-locations/{locationId} - Get work location
+PUT /api/v1/enterprises/{enterpriseId}/work-locations/{locationId} - Update work location
+DELETE /api/v1/enterprises/{enterpriseId}/work-locations/{locationId} - Delete work location
+
+
+Enterprise-Specific Towers
+GET /api/v1/enterprises/{enterpriseId}/towers - List enterprise towers
+POST /api/v1/enterprises/{enterpriseId}/towers - Create enterprise tower
+GET /api/v1/enterprises/{enterpriseId}/towers/{towerId} - Get tower details
+PUT /api/v1/enterprises/{enterpriseId}/towers/{towerId} - Update tower
+DELETE /api/v1/enterprises/{enterpriseId}/towers/{towerId} - Delete tower
+POST /api/v1/enterprises/{enterpriseId}/towers/bulk-import - Bulk import towers
+
+
+
+4. Manage Enterprise Module
+Enterprise Management
+GET /api/v1/enterprises/{enterpriseId} - Get enterprise details
+PUT /api/v1/enterprises/{enterpriseId} - Update enterprise
+GET /api/v1/enterprises/{enterpriseId}/subscription - Get subscription details
+PUT /api/v1/enterprises/{enterpriseId}/subscription - Update subscription
+
+Enterprise Roles
+GET /api/v1/enterprises/{enterpriseId}/roles - List enterprise roles
+POST /api/v1/enterprises/{enterpriseId}/roles - Create enterprise role
+GET /api/v1/enterprises/{enterpriseId}/roles/{roleId} - Get role details
+PUT /api/v1/enterprises/{enterpriseId}/roles/{roleId} - Update role
+DELETE /api/v1/enterprises/{enterpriseId}/roles/{roleId} - Delete role
+
+Enterprise User Role Assignment
+GET /api/v1/enterprises/{enterpriseId}/users/{userId}/roles - Get user roles
+POST /api/v1/enterprises/{enterpriseId}/users/{userId}/roles - Assign roles to user
+DELETE /api/v1/enterprises/{enterpriseId}/users/{userId}/roles/{roleId} - Remove role from user
+
+
+
+5. Enterprise Onboarding/Management Module (Platform Admin)
+Enterprise Onboarding
+GET /api/v1/platform/enterprises - List all enterprises
+POST /api/v1/platform/enterprises - Create new enterprise
+GET /api/v1/platform/enterprises/{enterpriseId} - Get enterprise details
+PUT /api/v1/platform/enterprises/{enterpriseId} - Update enterprise
+DELETE /api/v1/platform/enterprises/{enterpriseId} - Delete enterprise
+
+Subscription Management
+GET /api/v1/platform/subscriptions - List subscription plans
+POST /api/v1/platform/subscriptions - Create subscription plan
+PUT /api/v1/platform/subscriptions/{subscriptionId} - Update subscription plan
+
+Platform Users (Internal)
+GET /api/v1/platform/users - List platform users
+POST /api/v1/platform/users - Create platform user
+GET /api/v1/platform/users/{userId} - Get platform user
+PUT /api/v1/platform/users/{userId} - Update platform user
+DELETE /api/v1/platform/users/{userId} - Delete platform user
+
+Platform Roles (Internal)
+GET /api/v1/platform/roles - List platform roles
+POST /api/v1/platform/roles - Create platform role
+GET /api/v1/platform/roles/{roleId} - Get platform role
+PUT /api/v1/platform/roles/{roleId} - Update platform role
+
+
+
+6. Tower Management Module (Platform Admin)
+Public Tower Management
+GET /api/v1/platform/towers - List all towers (with filters)Query params: ?isPublic=true&carrierId=&location=&limit=&offset=
+
+POST /api/v1/platform/towers - Create new tower
+GET /api/v1/platform/towers/{towerId} - Get tower details
+PUT /api/v1/platform/towers/{towerId} - Update tower
+DELETE /api/v1/platform/towers/{towerId} - Delete tower
+POST /api/v1/platform/towers/bulk-import - Bulk import towers
+GET /api/v1/platform/towers/export - Export towers
+
+
+Carriers
+GET /api/v1/platform/carriers - List all carriers
+POST /api/v1/platform/carriers - Create new carrier
+GET /api/v1/platform/carriers/{carrierId} - Get carrier details
+PUT /api/v1/platform/carriers/{carrierId} - Update carrier
+DELETE /api/v1/platform/carriers/{carrierId} - Delete carrier
+
+
+
+7. Common/Utility Endpoints
+Authentication & Authorization
+POST /api/v1/auth/login - User login
+POST /api/v1/auth/logout - User logout
+POST /api/v1/auth/refresh - Refresh access token
+GET /api/v1/auth/me - Get current user profile
+PUT /api/v1/auth/me - Update current user profile
+
+

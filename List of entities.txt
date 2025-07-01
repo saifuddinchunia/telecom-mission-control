@@ -1,0 +1,151 @@
+1. Enterprise
+Represents an enterprise using the SaaS platform.
+
+id,	
+name,	
+subscription_id,	
+created_at
+
+2. Subscription
+id,
+plan_type,
+description
+
+3. EnterpriseUser (Enterprise User)
+Represents a person in an enterprise who uses a device.
+
+id,
+enterprise_id,
+email,
+name,
+status,
+created_at
+
+4. EnterpriseRole
+Defines a role within an enterprise.
+
+id,
+enterprise_id,
+name,
+description
+
+5 . Device
+Represents an enterprise user's device.
+
+id,
+enterprise_id,
+user_id,
+device_type(iPhone 14, Pixel 6),
+os,
+status(active, retired, pending),
+is_auto_discovered,
+created_at,
+device_inventory_id
+
+6. DeviceInventoryItem
+Template of devices available for assignment.
+id,
+name
+os,
+created_by,
+enterprise_id (Null for global items offered by the Saas platform)
+
+
+7. App
+Represents a mobile/device application used by .
+
+id,
+name,
+package_id
+supported_os[]
+
+8. AppAction
+Actions that a user can perform in various apps
+
+id,
+name,
+description,
+
+9. Carrier
+id
+name
+
+10. Tower
+Represents a cell tower.
+
+id
+location(geo location)
+carriers[]
+supported_os[]
+is_public(public or enterprise-specific)
+enterprise_id(if private tower/device)
+
+11. WorkLocation
+Logical grouping of towers, can be used to make rules and also filter security events on the dashboard.
+
+id
+enterprise_id,
+name (SF headquarter, Seattle warehouse, Seattle admin office),
+tower_ids[]
+
+12. Policy
+Defines allowed/denied actions for apps based on user/device attributes.
+
+id,
+enterprise_id,
+app_id,
+role_id,
+os,
+device_type(iphone 14, pixel 6)
+location_id(optional)
+remedial_action	(otional, Premium plan feature)
+created_at	Timestamp	
+
+13. Rule
+A rule or number of rules help define a policy in varying degrees of granularity.  The conditions attribute stores various parameters in a JSONB sructure. This helps us keep the parameter list flexible and make it future-proof without the need to update the DB schema each time there is a change in the parameters. Each parameter like roles, work location, OS supported, carrirers supported etc can be thought of operands in logical AND operation. Each value in parameter can be a logical OR operand in the condition. For example the condtion has {roles: ['manager', 'executive'], work_locations: ["san francisco", "houston"]}, then the rule will apply to managers or executives who live in either san francisco or houston. 
+
+id,
+description,
+conditions,
+effective_from,
+effective_to,
+exceptions
+
+14. ActionEvent
+Logs a user action detected by a tower.
+
+id,
+device_id,
+user_id,
+app_id,
+app_action_name,
+status(allowed, denied, remediated)
+location_id
+timestamp	
+
+
+15. RemedialAction
+Remedial actions to perform against policy non-compliance at an app level (example write action when not permitted) and also at device level (jail broken device detected, non-compliant app detected)
+
+id
+type(disable, block)
+duration
+
+
+16. PlatformUser
+Represents a SaaS platform operator (not enterprise specific).
+
+id,
+email,
+name,
+status	(active, suspended)
+created_at	Timestamp
+platformRoles[]	
+
+17. PlatformRole
+Internal platform-level role.
+
+id,
+name,
+permissions[]
+
